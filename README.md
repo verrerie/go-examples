@@ -24,13 +24,13 @@ go run ./02-values
 
 - [x] Hello World
 - [x] Values
-- [ ] Variables
-- [ ] Constants
-- [ ] For
-- [ ] If/Else
-- [ ] Switch
-- [ ] Arrays
-- [ ] Slices
+- [x] Variables
+- [x] Constants
+- [x] For
+- [x] If/Else
+- [x] Switch
+- [x] Arrays
+- [x] Slices
 - [ ] Maps
 - [ ] Range
 - [ ] Functions
