@@ -31,21 +31,38 @@ go run ./02-values
 - [x] Switch
 - [x] Arrays
 - [x] Slices
-- [ ] Maps
-- [ ] Range
-- [ ] Functions
+- [x] Maps
+- [x] Range
+- [x] Functions
 - [ ] Multiple Return Values
 - [ ] Variadic Functions
 - [ ] Closures
 - [ ] Recursion
-- [ ] Pointers
-- [ ] Strings and Runes
-- [ ] Structs
-- [ ] Methods
-- [ ] Interfaces
-- [ ] Struct Embedding
-- [ ] Generics
-- [ ] Errors
+- [x] Pointers
+- [x] Strings and Runes
+- [x] Structs
+- [x] Methods
+- [x] Interfaces
+- [x] Enums
+- [x] Struct Embedding
+- [x] Generics
+- [x] Range over Iterators
+- [x] Errors
+- [x] Custom Errors
+- [x] Goroutines
+- [x] Channels
+- [x] Channel Buffering
+- [x] Channel Synchronization
+- [x] Channel Directions
+- [x] Select
+- [x] Timeouts
+- [x] Non-Blocking Channel Operations
+- [x] Closing Channels
+- [x] Range over Channels
+- [x] Timers
+- [x] Tickers
+- [x] Worker Pools
+- [x] WaitGroups
 - [ ] ...and beyond
 
 To add a new topic: create a new numbered directory with a `main.go`, write/adapt the example,
