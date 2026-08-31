@@ -63,6 +63,10 @@ go run ./02-values
 - [x] Tickers
 - [x] Worker Pools
 - [x] WaitGroups
+- [x] Rate Limiting
+- [x] Atomic Counters
+- [x] Mutexes
+- [x] Stateful Goroutines
 - [ ] ...and beyond
 
 To add a new topic: create a new numbered directory with a `main.go`, write/adapt the example,
