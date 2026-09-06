@@ -63,5 +63,5 @@ func main() {
 	}
 	fmt.Println("c(3,2)=", c(3, 2))
 	fmt.Println("c(6,2)=", c(6, 2))
-	fmt.Println("c(6,3)=", c(3, 2))
+	fmt.Println("c(6,3)=", c(6, 3))
 }
