@@ -22,12 +22,12 @@ go run ./02-values
 
 ## Progress
 
-Complete — all 81 directories below are done, finishing at gobyexample's last
-topic (Exit).
+Complete — every gobyexample topic is covered across the 81 directories below,
+finishing at their last topic (Exit).
 
-Four topics were skipped on the way through and are marked **gap** below. That
-skip is why the directory numbers run four behind gobyexample's own ordering
-from `12-range-over` onward, so use the number in this list to find the
+Five topics share `11-functions`, which demonstrates all of them in one file.
+That merge is why the directory numbers run four behind gobyexample's own
+ordering from `12-range-over` onward, so use the number in this list to find the
 directory rather than counting positions on the site.
 
 - [x] `01` Hello World
@@ -41,10 +41,10 @@ directory rather than counting positions on the site.
 - [x] `09` Slices
 - [x] `10` Maps
 - [x] `11` Functions
-- [ ] Multiple Return Values — **gap**
-- [ ] Variadic Functions — **gap**
-- [ ] Closures — **gap**
-- [ ] Recursion — **gap**
+- [x] `11` Multiple Return Values *(in `11-functions`: `div`)*
+- [x] `11` Variadic Functions *(in `11-functions`: `concat`)*
+- [x] `11` Closures *(in `11-functions`: `initSeq`)*
+- [x] `11` Recursion *(in `11-functions`: `c`)*
 - [x] `12` Range over Built-in Types
 - [x] `13` Pointers
 - [x] `14` Strings and Runes
@@ -116,7 +116,7 @@ directory rather than counting positions on the site.
 - [x] `80` Signals
 - [x] `81` Exit
 
-To close a gap: create a directory at the next free number with a `main.go`, write
+To add a topic: create a directory at the next free number with a `main.go`, write
 the example, run it with `go run ./NN-topic-name`, tick the box above, commit.
 
 ## Syncing across machines
