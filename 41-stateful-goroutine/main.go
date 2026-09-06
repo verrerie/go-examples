@@ -41,7 +41,7 @@ func main() {
 
 	var wg sync.WaitGroup
 
-	for range 101 {
+	for range 1010 {
 		wg.Go(func() {
 			read := readOp{
 				key: rand.IntN(5),
@@ -54,7 +54,7 @@ func main() {
 		})
 	}
 
-	for range 35 {
+	for range 3500 {
 		wg.Go(func() {
 			write := writeOp{
 				key: rand.IntN(5),
