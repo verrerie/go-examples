@@ -16,9 +16,11 @@ func lengthOfLongestSubstring(s string) int {
 	result := 0 // empty string return 0
 	i := 0
 	// we make sure every step / iteration of j, the window between i and j is valid
+	// time = O(n)
 	for j := 0; j < len(s); j++ {
 		counts[s[j]] = counts[s[j]] + 1
-		// remove duplicates
+		// remove duplicates: we have only one char that has only one duplicate
+		// so we keep moving forward until the duplicate is removed
 		for counts[s[j]] > 1 {
 			counts[s[i]] = counts[s[i]] - 1
 			i++ // advance i
