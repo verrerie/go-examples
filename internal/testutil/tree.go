@@ -73,3 +73,18 @@ func makeTreeNode(value any, index int) *TreeNode {
 	}
 	return &TreeNode{Val: n}
 }
+
+func ToSlice(t *TreeNode) []int {
+	result := make([]int, 0)
+	var visit func(*TreeNode)
+	visit = func(tr *TreeNode) {
+		if tr == nil {
+			return
+		}
+		result = append(result, tr.Val)
+		visit(tr.Left)
+		visit(tr.Right)
+	}
+	visit(t)
+	return result
+}
