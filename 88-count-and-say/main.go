@@ -21,12 +21,17 @@ func main() {
 
 func countAndSay(n int) string {
 	s := "1"
+	// time = O(L_1 + ... + L_n), L_k = len of k-th term ~ λ^k, λ ≈ 1.3036 (Conway's constant)
+	// geometric series, so O(λ^n)
+	// space = O(λ^n), the final string
 	for x := 2; x <= n; x++ {
 		s = rle(s)
 	}
 	return s
 }
 
+// time = O(L), space = O(L), L = len(s)
+// counts are written as a single digit, which holds for count-and-say terms (runs <= 3) but not for arbitrary input
 func rle(s string) string {
 	if len(s) == 0 {
 		return s
@@ -38,11 +43,14 @@ func rle(s string) string {
 		if prev == s[i] {
 			n++
 		} else {
-			fmt.Fprintf(&build, "%d%c", n, prev)
+			// the ascii number of 1 single digit
+			build.WriteByte('0' + byte(n))
+			build.WriteByte(prev)
 			n = 1
 			prev = s[i]
 		}
 	}
-	fmt.Fprintf(&build, "%d%s", n, string(prev))
+	build.WriteByte('0' + byte(n))
+	build.WriteByte(prev)
 	return build.String()
 }
