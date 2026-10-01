@@ -5,6 +5,11 @@ import (
 	"slices"
 )
 
+func main() {
+	fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
+	// sorted: -4, -1 -1, 0, 1, 2
+}
+
 func threeSum(nums []int) [][]int {
 	slices.Sort(nums)
 	result := [][]int{}
@@ -44,9 +49,4 @@ func threeSum(nums []int) [][]int {
 	}
 
 	return result
-}
-
-func main() {
-	fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
-	// sorted: -4, -1 -1, 0, 1, 2
 }
