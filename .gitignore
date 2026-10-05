@@ -16,3 +16,6 @@ go.work.sum
 
 # Editor backups
 *~
+
+# Neovim log
+/nvim.log
