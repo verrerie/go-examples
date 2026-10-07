@@ -57,7 +57,7 @@ func minMeetingRooms(intervals [][]int) int {
 	})
 
 	h := make(MinHeap, 0)
-	// time = O(n*logn), n iterations, and h per heap operation
+	// time = O(n*logn), n iterations, and O(h) per heap operation
 	for _, interval := range intervals {
 		if h.Len() == 0 {
 			heap.Push(&h, interval[1])
