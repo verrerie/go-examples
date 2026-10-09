@@ -19,3 +19,6 @@ go.work.sum
 
 # Neovim log
 /nvim.log
+
+# Generated website output
+/invariant-atlas/dist/
