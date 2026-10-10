@@ -9,9 +9,15 @@ func main() {
 	const s = "สวัสดี"
 	fmt.Println("len=", len(s))
 
-	for r := range s {
+	for _, r := range s {
 		fmt.Printf("%x ", r)
 	}
+
+	fmt.Println()
+	for _, c := range "hello world!" {
+		fmt.Printf("%v-", string(c))
+	}
+
 	fmt.Println()
 	fmt.Println("runes count:", utf8.RuneCountInString(s))
 
