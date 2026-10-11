@@ -2,25 +2,24 @@ package main
 
 import "testing"
 
-func TestPointers(t *testing.T) {
+func TestCycle(t *testing.T) {
 	for n := 0; n <= 8; n++ {
 		nodes := make([]ListNode, n)
 		for i := 0; i < n-1; i++ {
 			nodes[i].Next = &nodes[i+1]
 		}
-		var head, want *ListNode
+		var head *ListNode
 		if n > 0 {
 			head = &nodes[0]
-			want = &nodes[n/2]
 		}
-		if middle(head) != want || hasCycle(head) {
+		if hasCycle(head) {
 			t.Fatal("acyclic", n)
 		}
 		if n > 0 {
-			for entry := range n {
-				nodes[n-1].Next = &nodes[entry]
+			for i := range n {
+				nodes[n-1].Next = &nodes[i]
 				if !hasCycle(head) {
-					t.Fatal("missed cycle", n, entry)
+					t.Fatal("cycle", n, i)
 				}
 			}
 		}

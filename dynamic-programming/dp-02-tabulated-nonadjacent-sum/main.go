@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// maxNonAdjacent uses the same suffix state as the memoized version in 141.
+// maxNonAdjacent uses the same suffix state as the memoized version in dp-01-memoized-nonadjacent-sum.
 // Invariant: before i, every dependency dp[i+1:] is already final.
 // Fill backward because this recurrence depends on larger indices.
 // Time O(n); space O(n). Choosing none is allowed; sums must fit int.

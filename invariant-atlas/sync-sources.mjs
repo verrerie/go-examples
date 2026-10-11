@@ -1,14 +1,20 @@
-import {readdirSync,readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync,unlinkSync,existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-const root=path.dirname(fileURLToPath(import.meta.url)), repo=path.dirname(root), files={};
-mkdirSync(path.join(root,'dist/sources'),{recursive:true});
-for(const dir of readdirSync(repo)) {
- const n=Number(dir.slice(0,3));
- if(!/^\d{3}-/.test(dir)||n<82||n>145) continue;
- const name=`${dir}/main.go`;
- writeFileSync(path.join(root,'dist/sources',`${n}.txt`),readFileSync(path.join(repo,name)));
- files[n]=name;
+const root=path.dirname(fileURLToPath(import.meta.url)),repo=path.dirname(root);
+const catalog=JSON.parse(readFileSync(path.join(repo,'code-library.json'),'utf8'));
+const sources={},metadata={},output=path.join(root,'dist/sources');
+mkdirSync(output,{recursive:true});
+for(const entry of catalog.entries){
+ const name=entry.path+'/main.go';const full=path.resolve(repo,name);
+ if(!full.startsWith(repo+path.sep))throw Error('Source outside repository');
+ let text=readFileSync(full,'utf8');
+ const scaffold=path.join(repo,entry.path,'scaffold.go');
+ if(existsSync(scaffold))text+='\n\n// --- scaffold.go (original teaching template) ---\n'+readFileSync(scaffold,'utf8');
+ sources[entry.id]=name;metadata[entry.id]=entry;
+ writeFileSync(path.join(output,entry.id+'.txt'),text);
 }
-writeFileSync(path.join(root,'dist/sources.js'),`const SOURCES = ${JSON.stringify(files,null,2)};\n`);
-console.log(`Saved ${Object.keys(files).length} source snapshots.`);
+// Remove obsolete generated snapshots only inside this exact output directory.
+for(const file of readdirSync(output)){if(file.endsWith('.txt')&&!Object.hasOwn(sources,file.slice(0,-4)))unlinkSync(path.join(output,file));}
+writeFileSync(path.join(root,'dist/sources.js'),`const SOURCES = ${JSON.stringify(sources,null,2)};\nconst SOURCE_META = ${JSON.stringify(metadata,null,2)};\nconst SOURCE_GROUPS = ${JSON.stringify(catalog.groups)};\n`);
+console.log(`Saved ${catalog.entries.length} source snapshots across ${catalog.groups.length} groups.`);

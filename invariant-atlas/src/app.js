@@ -1,17 +1,26 @@
 'use strict';
 const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const groups=['All patterns',...new Set(PATTERNS.map(p=>p.group))];
+const groups=['All patterns',...SOURCE_GROUPS.map(g=>g.title)];
 let group='All patterns',query='',recall=false,unreviewed=false,current=null,revealed=false,traceIndex=0;
 let reviewed=new Set();
 try{reviewed=loadReviewed(localStorage);}catch{}
-function filtered(){return PATTERNS.filter(p=>(group==='All patterns'||p.group===group)&&(!unreviewed||!reviewed.has(p.id))&&[p.title,p.group,p.invariant,p.trap,...p.sources.map(n=>`${n} ${SOURCES[n]}`)].join(' ').toLowerCase().includes(query.toLowerCase()));}
+function matches(text){return query.toLowerCase().trim().split(/ +/).every(term=>text.toLowerCase().includes(term));}
+function sourceText(id){const m=SOURCE_META[id];return [id,SOURCES[id],m.title,...m.aliases].join(' ');}
+function filtered(){return PATTERNS.filter(p=>(group==='All patterns'||p.group===group)&&(!unreviewed||!reviewed.has(p.id))&&matches([p.title,p.group,p.invariant,p.step,p.trap,...p.tags,...p.sources.map(sourceText)].join(' ')));}
+function codeMatches(){return Object.values(SOURCE_META).filter(m=>{
+ const family=SOURCE_GROUPS.find(g=>g.prefix===m.group).title;
+ const related=PATTERNS.filter(p=>p.sources.includes(m.id));
+ return (group==='All patterns'||group===family)&&matches([sourceText(m.id),family,...related.flatMap(p=>[p.title,...p.tags])].join(' '));
+});}
+function renderCodeIndex(){const list=codeMatches();$('#code-count').textContent=list.length+' matching implementations';$('#code-index').innerHTML=list.map(m=>'<a class="button cheatsheet-link" href="sources/'+m.id+'.txt" target="_blank" rel="noopener"><span>'+escapeHTML(m.id)+'</span><small>'+escapeHTML(m.path)+'</small></a>').join('')||'<p>No matching implementations. Try a group prefix or an old exercise number.</p>';}
 function render(){
- $('#categories').innerHTML=groups.map(g=>`<button class="category ${g===group?'active':''}" data-group="${g}" aria-pressed="${g===group}">${g}<span>${g==='All patterns'?PATTERNS.length:PATTERNS.filter(p=>p.group===g).length}</span></button>`).join('');
+ $('#categories').innerHTML=groups.map(g=>{const notes=g==='All patterns'?PATTERNS.length:PATTERNS.filter(p=>p.group===g).length;const code=g==='All patterns'?Object.keys(SOURCES).length:Object.values(SOURCE_META).filter(m=>SOURCE_GROUPS.find(f=>f.prefix===m.group).title===g).length;return '<button class="category '+(g===group?'active':'')+'" data-group="'+escapeHTML(g)+'" aria-pressed="'+(g===group)+'">'+escapeHTML(g)+'<span>'+notes+' notes · '+code+' code</span></button>';}).join('');
  const list=filtered();$('#section-title').innerHTML=`${group} <span>${list.length}</span>`;
- $('#cards').innerHTML=list.map(p=>`<button class="card" data-id="${p.id}" aria-label="Study ${escapeHTML(p.title)}"><span class="card-head"><span class="tag">${p.group}</span><span class="card-number">${String(p.sources[0]).padStart(3,'0')}</span></span><h3>${escapeHTML(p.title)}</h3><p>${recall?'State the invariant before you open the proof.':escapeHTML(p.invariant)}</p><span class="card-foot"><span>${reviewed.has(p.id)?'✓ Reviewed':recall?'Test your recall':'Read the proof'}</span><span aria-hidden="true">↗</span></span></button>`).join('');
+ $('#cards').innerHTML=list.map(p=>`<button class="card" data-id="${p.id}" aria-label="Study ${escapeHTML(p.title)}"><span class="card-head"><span class="tag">${p.group}</span><span class="card-number">${escapeHTML(p.sources[0])}</span></span><h3>${escapeHTML(p.title)}</h3><p>${recall?'State the invariant before you open the proof.':escapeHTML(p.invariant)}</p><span class="card-foot"><span>${reviewed.has(p.id)?'✓ Reviewed':recall?'Test your recall':'Read the proof'}</span><span aria-hidden="true">↗</span></span></button>`).join('');
  $('#empty').hidden=list.length>0;$('#pattern-count').textContent=PATTERNS.length;$('#review-count').textContent=reviewed.size;$('#progress').max=PATTERNS.length;$('#progress').value=reviewed.size;
  $('#mode-note').textContent=recall?'Recall mode: say the rule first. Then reveal the proof.':'Select a card to see the proof, example, and Go source.';
+ renderCodeIndex();
  $('#status').textContent=`${list.length} patterns shown.`;
 }
 const traces={
@@ -32,9 +41,9 @@ const traces={
 function traceMarkup(){if(!traces[current.id])return '';return '<div class="trace"><div class="trace-head"><span>STEP THROUGH THE STATE</span></div><div id="trace-body"></div><div class="trace-controls"><button id="trace-prev" class="button" aria-label="Previous step">←</button><button id="trace-next" class="button" aria-label="Next step">→</button><span id="trace-count"></span></div></div>';}
 function renderTrace(){const steps=traces[current.id];if(!steps)return;const s=steps[traceIndex];$('#trace-body').innerHTML=`<div class="cells">${s.values.map((v,i)=>`<span class="cell ${s.colors[i]||''}">${v}</span>`).join('')}</div><p>${escapeHTML(s.text)}</p>`;$('#trace-count').textContent=`${traceIndex+1} / ${steps.length}`;$('#trace-prev').disabled=traceIndex===0;$('#trace-next').disabled=traceIndex===steps.length-1;}
 function detail(){const p=current;
- $('#detail-group').textContent=`${p.group} / ${p.sources.map(n=>String(n).padStart(3,'0')).join(' · ')}`;
+ $('#detail-group').textContent=`${p.group} / ${p.sources.join(' · ')}`;
  const hidden=recall&&!revealed;
- $('#detail-content').innerHTML=`<h2 id="detail-title" class="detail-title">${escapeHTML(p.title)}</h2>`+(hidden?'<div class="recall-prompt"><p>What stays true after each step?</p><p>Why does the next move preserve it?</p><button id="reveal" class="primary">Reveal the proof</button></div>':`<div class="rule"><p class="eyebrow">${p.id==='scheduler'?'KEY BOUND':'KEY INVARIANT'}</p><p>${escapeHTML(p.invariant)}</p></div><div class="proof-details"><div><h3>01 · Keep it true</h3><p>${escapeHTML(p.step)}</p></div><div><h3>02 · Stop and conclude</h3><p>${escapeHTML(p.stop)}</p></div></div>${traceMarkup()}<div class="example"><h3>A small example</h3><p>${escapeHTML(p.example)}</p></div><div class="trap"><h3>Watch this</h3><p>${escapeHTML(p.trap)}</p></div><p class="cost">${escapeHTML(p.cost)}</p><details class="source-links"><summary>Your Go source</summary>${p.sources.map(n=>`<a href="sources/${n}.txt" target="_blank" rel="noopener">${escapeHTML(SOURCES[n])} ↗</a>`).join('')}<p>Saved snapshot. Notes describe the pattern; source comments can differ.</p></details>`);
+ $('#detail-content').innerHTML=`<h2 id="detail-title" class="detail-title">${escapeHTML(p.title)}</h2>`+(hidden?'<div class="recall-prompt"><p>What stays true after each step?</p><p>Why does the next move preserve it?</p><button id="reveal" class="primary">Reveal the proof</button></div>':`<div class="rule"><p class="eyebrow">${p.id==='scheduler'?'KEY BOUND':'KEY INVARIANT'}</p><p>${escapeHTML(p.invariant)}</p></div><div class="proof-details"><div><h3>01 · Keep it true</h3><p>${escapeHTML(p.step)}</p></div><div><h3>02 · Stop and conclude</h3><p>${escapeHTML(p.stop)}</p></div></div>${traceMarkup()}<div class="example"><h3>A small example</h3><p>${escapeHTML(p.example)}</p></div><div class="trap"><h3>Watch this</h3><p>${escapeHTML(p.trap)}</p></div><p class="cost">${escapeHTML(p.cost)}</p><details class="source-links"><summary>Your Go source</summary>${p.sources.map(n=>`<a href="sources/${n}.txt" target="_blank" rel="noopener">${escapeHTML(n)} ↗</a>`).join('')}<p>Saved snapshot. Notes describe the pattern; source comments can differ.</p></details>`);
  $('#reviewed').textContent=reviewed.has(p.id)?'✓ Reviewed · undo':'Mark as reviewed';
  $('#reviewed').disabled=hidden;
  if(!hidden)renderTrace();
@@ -56,5 +65,5 @@ render();const initial=PATTERN_ALIASES[location.hash.slice(1)]||location.hash.sl
 
 // Keep the coverage index tied to the same stable pattern IDs as review marks.
 $('#exercise-count').textContent=Object.keys(SOURCES).length;
-$('#cheatsheet-index').innerHTML=CHEATSHEET.map(([label,id],i)=>{const p=PATTERNS.find(p=>p.id===id);return `<button class="button cheatsheet-link" data-id="${id}"><span>${String(i+1).padStart(2,'0')} · ${escapeHTML(label)}</span><small>Go ${p.sources.map(n=>String(n).padStart(3,'0')).join(' · ')}</small></button>`;}).join('');
+$('#cheatsheet-index').innerHTML=CHEATSHEET.map(([label,id],i)=>{const p=PATTERNS.find(p=>p.id===id);return `<button class="button cheatsheet-link" data-id="${id}"><span>${String(i+1).padStart(2,'0')} · ${escapeHTML(label)}</span><small>Go ${p.sources.join(' · ')}</small></button>`;}).join('');
 $('#cheatsheet-index').addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(b)openPattern(b.dataset.id);});

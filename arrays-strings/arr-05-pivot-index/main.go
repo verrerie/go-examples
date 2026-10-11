@@ -2,23 +2,6 @@ package main
 
 import "fmt"
 
-func main() {
-	fmt.Println(prefixSum([]int{1, 2, 3, 4, 5, 6}))
-	fmt.Println(pivotIndex([]int{1, 7, 3, 6, 5, 6}))
-}
-
-// prefix sum pattern
-func prefixSum(arr []int) []int {
-	prefix := make([]int, len(arr))
-	prefix[0] = arr[0]
-
-	for i := 1; i < len(arr); i++ {
-		prefix[i] = prefix[i-1] + arr[i]
-	}
-
-	return prefix
-}
-
 func pivotIndex(nums []int) int {
 	// space = O(1)
 	if len(nums) == 0 {
@@ -44,4 +27,7 @@ func pivotIndex(nums []int) int {
 		}
 	}
 	return -1
+}
+func main() {
+	fmt.Println(pivotIndex([]int{1, 7, 3, 6, 5, 6}))
 }
