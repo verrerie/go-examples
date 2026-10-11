@@ -49,3 +49,7 @@ All 25 templates and both extensions from the [LeetCode cheatsheet](https://leet
 | Extension: monotonic queue | [sq-03-window-maximum-deque](../stacks-queues/sq-03-window-maximum-deque/main.go) |
 
 Distinct stopping rules remain separate: middle/cycle, partition/quicksort, inorder/rank, longest/shortest windows, exact-match/insertion searches, recursive/iterative DFS, and memoized/tabulated DP.
+
+## Interview quick reference
+
+The `#quick-reference` section summarizes [LeetCode resource 4725](https://leetcode.com/explore/interview/card/cheatsheets/720/resources/4725/): searchable pattern cues, Go operation costs, input-size hints, and interview steps. Dynamic programming and backtracking are excluded from this summary. Existing catalog entries remain available. Cue links reuse stable invariant IDs and their Go source references.
