@@ -4,7 +4,7 @@ const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>'
 const groups=['All patterns',...new Set(PATTERNS.map(p=>p.group))];
 let group='All patterns',query='',recall=false,unreviewed=false,current=null,revealed=false,traceIndex=0;
 let reviewed=new Set();
-try{const saved=JSON.parse(localStorage.getItem('invariant-atlas-reviewed')||'[]');if(Array.isArray(saved))reviewed=new Set(saved.filter(id=>PATTERNS.some(p=>p.id===id)));}catch{}
+try{reviewed=loadReviewed(localStorage);}catch{}
 function filtered(){return PATTERNS.filter(p=>(group==='All patterns'||p.group===group)&&(!unreviewed||!reviewed.has(p.id))&&[p.title,p.group,p.invariant,p.trap,...p.sources.map(n=>`${n} ${SOURCES[n]}`)].join(' ').toLowerCase().includes(query.toLowerCase()));}
 function render(){
  $('#categories').innerHTML=groups.map(g=>`<button class="category ${g===group?'active':''}" data-group="${g}" aria-pressed="${g===group}">${g}<span>${g==='All patterns'?PATTERNS.length:PATTERNS.filter(p=>p.group===g).length}</span></button>`).join('');
@@ -39,7 +39,7 @@ function detail(){const p=current;
  $('#reviewed').disabled=hidden;
  if(!hidden)renderTrace();
 }
-function openPattern(id){current=PATTERNS.find(p=>p.id===id);if(!current)return;revealed=false;traceIndex=0;detail();if(!$('#detail').open){$('#detail').showModal();document.body.classList.add('modal-open');}$('#detail').scrollTop=0;history.replaceState(null,'',`#${id}`);}
+function openPattern(id){id=PATTERN_ALIASES[id]||id;current=PATTERNS.find(p=>p.id===id);if(!current)return;revealed=false;traceIndex=0;detail();if(!$('#detail').open){$('#detail').showModal();document.body.classList.add('modal-open');}$('#detail').scrollTop=0;history.replaceState(null,'',`#${id}`);}
 $('#categories').addEventListener('click',e=>{const b=e.target.closest('[data-group]');if(b){group=b.dataset.group;render();}});
 $('#cards').addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(b)openPattern(b.dataset.id);});
 $('#search').addEventListener('input',e=>{query=e.target.value;render();});
@@ -52,4 +52,9 @@ $('#detail').addEventListener('click',e=>{if(e.target.id==='reveal'){revealed=tr
 $('#reviewed').addEventListener('click',()=>{if(reviewed.has(current.id))reviewed.delete(current.id);else reviewed.add(current.id);try{localStorage.setItem('invariant-atlas-reviewed',JSON.stringify([...reviewed]));}catch{}render();$('#reviewed').textContent=reviewed.has(current.id)?'✓ Reviewed · undo':'Mark as reviewed';});
 $('#next-pattern').addEventListener('click',()=>{const list=filtered();if(!list.length){$('#detail').close();return;}const index=list.findIndex(p=>p.id===current.id);openPattern(list[(index+1)%list.length].id);});
 document.addEventListener('keydown',e=>{if(e.key==='/'&&!$('#detail').open&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();$('#search').focus();}});
-render();const initial=location.hash.slice(1);if(PATTERNS.some(p=>p.id===initial))openPattern(initial);
+render();const initial=PATTERN_ALIASES[location.hash.slice(1)]||location.hash.slice(1);if(PATTERNS.some(p=>p.id===initial))openPattern(initial);
+
+// Keep the coverage index tied to the same stable pattern IDs as review marks.
+$('#exercise-count').textContent=Object.keys(SOURCES).length;
+$('#cheatsheet-index').innerHTML=CHEATSHEET.map(([label,id],i)=>{const p=PATTERNS.find(p=>p.id===id);return `<button class="button cheatsheet-link" data-id="${id}"><span>${String(i+1).padStart(2,'0')} · ${escapeHTML(label)}</span><small>Go ${p.sources.map(n=>String(n).padStart(3,'0')).join(' · ')}</small></button>`;}).join('');
+$('#cheatsheet-index').addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(b)openPattern(b.dataset.id);});

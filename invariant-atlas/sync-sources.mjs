@@ -5,7 +5,7 @@ const root=path.dirname(fileURLToPath(import.meta.url)), repo=path.dirname(root)
 mkdirSync(path.join(root,'dist/sources'),{recursive:true});
 for(const dir of readdirSync(repo)) {
  const n=Number(dir.slice(0,3));
- if(!/^\d{3}-/.test(dir)||n<82||n>120) continue;
+ if(!/^\d{3}-/.test(dir)||n<82||n>145) continue;
  const name=`${dir}/main.go`;
  writeFileSync(path.join(root,'dist/sources',`${n}.txt`),readFileSync(path.join(repo,name)));
  files[n]=name;

@@ -42,3 +42,5 @@ dialog{border-radius:12px;box-shadow:0 8px 32px #1f232833}.detail-title{font:600
 
 :root{color-scheme:dark}
 .primary{color:#ffffff}.logo{background:#30363d;color:#e6edf3}.cell{background:#0d1117}.cell.done{color:#7ee787}.cell.equal{color:#d2a8ff}.cell.high{color:#ffa657}.search input::placeholder{color:#9da7b3;opacity:1}dialog::backdrop{background:#010409b3}.rule p{color:#e6edf3}.trap p{color:#d4caa9}::selection{background:#264f78;color:#ffffff}
+
+.cheatsheet{margin:4rem 0;padding-top:2rem;border-top:1px solid #30363d}.cheatsheet h2{font-size:1.7rem;margin:.5rem 0}.cheatsheet>p{color:#9da7b3;line-height:1.6}.cheatsheet a{color:#58a6ff}.cheatsheet-index{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:.6rem;margin-top:1.5rem}.cheatsheet-link{display:flex;flex-direction:column;align-items:flex-start;text-align:left;white-space:normal;padding:.85rem;gap:.5rem}.cheatsheet-link small{color:#9da7b3}
