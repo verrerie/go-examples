@@ -7,3 +7,4 @@
 - Keep dialogs, inputs, code examples, and visual traces consistent with the dark theme.
 - Write concise, direct technical English. Keep explanations easy to scan.
 - Edit source files in src/ and rebuild with node build.mjs. Do not track generated dist/ files.
+- Default reading scale: 18px body text with 1.65 line height; 16px controls and links; 14px minimum metadata; 22px card headings; 32px section headings. Keep this scale on mobile and adapt layout instead of shrinking text.
