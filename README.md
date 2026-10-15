@@ -1,6 +1,6 @@
 # Go examples and algorithm patterns
 
-A grouped library of 152 runnable Go examples. Language features follow [Go by Example](https://gobyexample.com); algorithm notes are in [Invariant Atlas](invariant-atlas/README.md).
+A grouped library of 153 runnable Go examples. Language features follow [Go by Example](https://gobyexample.com); algorithm notes are in [Invariant Atlas](invariant-atlas/README.md).
 
 ## Find code
 
@@ -15,7 +15,7 @@ Each group has its own folder. Every implementation uses **prefix-number-name**,
 | Graphs and grids | graph | 6 | [graphs](graphs/README.md) |
 | Hash maps and counting | hash | 4 | [hash-maps](hash-maps/README.md) |
 | Stacks and queues | sq | 3 | [stacks-queues](stacks-queues/README.md) |
-| Heaps and priority queues | heap | 2 | [heaps](heaps/README.md) |
+| Heaps and priority queues | heap | 3 | [heaps](heaps/README.md) |
 | Dynamic programming | dp | 2 | [dynamic-programming](dynamic-programming/README.md) |
 | Bit operations | bit | 1 | [bit-operations](bit-operations/README.md) |
 

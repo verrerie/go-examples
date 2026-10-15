@@ -8,3 +8,4 @@ One folder contains one topic or problem. Alternative solutions to the same prob
 | --- | --- |
 | [heap-01-top-k-elements](heap-01-top-k-elements/main.go) | 134-tpl-top-k-heap |
 | [heap-02-meeting-rooms](heap-02-meeting-rooms/main.go) | 115-meeting-room-2 |
+| [heap-03-impl](heap-03-impl/main.go) | New implementation |

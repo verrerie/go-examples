@@ -13,7 +13,7 @@ test('unique cards and complete cheatsheet targets',()=>{
  for(const [,id] of coverage)assert.ok(patterns.some(p=>p.id===id),id);
  for(const id of Object.values(aliases))assert.ok(patterns.some(p=>p.id===id),id);
  for(const p of patterns){for(const field of ['invariant','step','stop','trap','cost','example'])assert.ok(p[field],p.id+field);for(const id of p.sources){assert.ok(metadata[id],id);assert.ok(existsSync(new URL('../../'+sources[id],import.meta.url)),id);assert.ok(existsSync(new URL('dist/sources/'+id+'.txt',root)),id);}}
- assert.equal(Object.keys(metadata).length,152);
+ assert.equal(Object.keys(metadata).length,153);
  assert.ok(patterns.every(p=>p.sources.every(id=>typeof id==='string')));
 
 });

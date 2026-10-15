@@ -1,6 +1,6 @@
 # Invariant Atlas
 
-69 invariant notes and 152 Go implementations in 10 groups. Dark GitHub styling; concise technical English.
+69 invariant notes and 153 Go implementations in 10 groups. Dark GitHub styling; concise technical English.
 
 From this directory:
 

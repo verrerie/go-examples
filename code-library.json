@@ -2145,6 +2145,19 @@
       ]
     },
     {
+      "id": "heap-03-impl",
+      "group": "heap",
+      "title": "min heap implementation",
+      "path": "heaps/heap-03-impl",
+      "legacy": [],
+      "aliases": [
+        "min heap",
+        "sift up",
+        "sift down",
+        "heap implementation"
+      ]
+    },
+    {
       "id": "dp-01-memoized-nonadjacent-sum",
       "group": "dp",
       "title": "memoized nonadjacent sum",
