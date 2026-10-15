@@ -11,6 +11,11 @@ func main() {
 	for range 10 {
 		fmt.Println(h.pop())
 	}
+	h.add(1)
+	h.add(1)
+	h.add(1)
+	h.add(0)
+	fmt.Println(h.pop(), h.pop(), h.pop(), h.pop())
 }
 
 type Heap struct {
