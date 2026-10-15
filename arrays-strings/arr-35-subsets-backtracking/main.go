@@ -22,4 +22,22 @@ func subsets(nums []int) [][]int {
 	visit(0)
 	return out
 }
-func main() { fmt.Println(subsets([]int{1, 2, 3})) }
+
+func subsets2(nums []int) [][]int {
+	out := [][]int{}
+	var visit func(int, []int)
+	visit = func(start int, path []int) {
+		saved := append([]int{}, path...)
+		out = append(out, saved)
+		for i := start; i < len(nums); i++ {
+			visit(i+1, append(path, nums[i]))
+		}
+	}
+	visit(0, make([]int, 0, len(nums)))
+	return out
+}
+
+func main() {
+	fmt.Println(subsets([]int{1, 2, 3}))
+	fmt.Println(subsets2([]int{4, 5, 6, 7, 8, 9}))
+}

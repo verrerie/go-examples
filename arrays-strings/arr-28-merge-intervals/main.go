@@ -30,7 +30,7 @@ func merge(intervals [][]int) [][]int {
 	result := [][]int{}
 	interval := intervals[0]
 	// time = O(n)
-	for next := 1; next < len(intervals); next++ {
+	for next := range intervals {
 		if interval[1] >= intervals[next][0] {
 			interval = []int{interval[0], max(interval[1], intervals[next][1])}
 		} else {
