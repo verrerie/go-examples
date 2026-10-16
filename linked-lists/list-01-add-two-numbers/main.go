@@ -83,8 +83,6 @@ func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 		if l1 != nil || l2 != nil || carry > 0 {
 			tail.Next = &ListNode{}
 			tail = tail.Next
-		} else {
-			tail.Next = nil // last one
 		}
 
 	}
