@@ -30,6 +30,8 @@ func main() {
 	l = []int{7, 2, 4, 1, 6, 0}
 	heapSort(l)
 	fmt.Println(l)
+	fmt.Println(topK(l, 2))
+	fmt.Println(Kth(l, 3))
 }
 
 func swap(arr []int, l, r int) {
@@ -42,6 +44,31 @@ func maxHeapify(arr []int) {
 	for lastParent := len(arr)/2 - 1; lastParent >= 0; lastParent-- {
 		// eg. len = 5, lastParent = 1 (2,3,4 are leaves), left  = 3, right = 4
 		siftDown(arr, len(arr), lastParent)
+	}
+}
+
+func minHeapify(arr []int) {
+	for lastParent := len(arr)/2 - 1; lastParent >= 0; lastParent-- {
+		siftDownMin(arr, len(arr), lastParent)
+	}
+}
+
+func siftDownMin(arr []int, heapSize, index int) {
+	for index < heapSize {
+		left := index*2 + 1
+		right := index*2 + 2
+		smallest := index
+		if left < heapSize && arr[smallest] > arr[left] {
+			smallest = left
+		}
+		if right < heapSize && arr[smallest] > arr[right] {
+			smallest = right
+		}
+		if index == smallest {
+			break
+		}
+		swap(arr, smallest, index)
+		index = smallest
 	}
 }
 
@@ -74,4 +101,39 @@ func heapSort(arr []int) {
 		swap(arr, last, 0)
 		siftDown(arr, last, 0)
 	}
+}
+
+// time = O(k + (n-k)·log(k+1)), space = O(1)
+func topK(arr []int, k int) []int {
+	if k > len(arr) || k <= 0 {
+		return []int{}
+	}
+
+	minHeapify(arr[:k])
+	for i := k; i < len(arr); i++ {
+		if arr[i] > arr[0] {
+			swap(arr, i, 0)
+			siftDownMin(arr[:k], k, 0)
+		}
+	}
+	return arr[:k]
+}
+
+// Kth time = O(k + (n-k)·log(k+1))
+// space = O(1)
+func Kth(arr []int, k int) int {
+	if k <= 0 || k > len(arr) {
+		panic("k out of range")
+	}
+	// O(k)
+	minHeapify(arr[:k])
+
+	// O((n-k)·log(k+1))
+	for i := k; i < len(arr); i++ {
+		if arr[i] > arr[0] {
+			swap(arr, i, 0)
+			siftDownMin(arr[:k], k, 0)
+		}
+	}
+	return arr[0]
 }
