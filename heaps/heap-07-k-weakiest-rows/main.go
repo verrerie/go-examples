@@ -14,6 +14,7 @@ func main() {
 }
 
 // time = O(mn + mlogk)
+// space = O(k)
 func kWeakestRows(mat [][]int, k int) []int {
 	h := heap{
 		[]position{},
