@@ -26,8 +26,8 @@ function renderQuickChoices(){
 document.querySelector('#quick-search').addEventListener('input',renderQuickChoices);
 document.querySelector('#quick-choices').addEventListener('click',event=>{const button=event.target.closest('[data-id]');if(button)openPattern(button.dataset.id);});
 renderQuickChoices();
-document.querySelector('.quick-nav').addEventListener('click',event=>{
+document.querySelectorAll('.quick-nav').forEach(nav=>nav.addEventListener('click',event=>{
  const link=event.target.closest('a');if(!link)return;
  const target=document.querySelector(link.getAttribute('href'));
  if(target?.tagName==='DETAILS')target.open=true;
-});
+}));
