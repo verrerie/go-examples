@@ -8,9 +8,9 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B'}, 2))
-	fmt.Println(leastInterval([]byte{'A', 'C', 'A', 'B', 'D', 'B'}, 1))
-	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B'}, 3))
+	fmt.Println(leastInterval([]byte("AAABBB"), 2))
+	fmt.Println(leastInterval([]byte("ACABDB"), 1))
+	fmt.Println(leastInterval([]byte("AAABBB"), 3))
 }
 
 func leastInterval(tasks []byte, n int) int {
@@ -19,8 +19,8 @@ func leastInterval(tasks []byte, n int) int {
 	highestFreq := 0
 	// time = O(N)
 	for _, task := range tasks {
-		newFreq := counts[task] + 1
-		counts[task] = newFreq
+		counts[task]++
+		newFreq := counts[task]
 		if newFreq > highestFreq {
 			highestFreq = newFreq
 		}
