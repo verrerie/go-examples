@@ -4,6 +4,7 @@
 package main
 
 import (
+	"container/heap"
 	"fmt"
 	"math/rand/v2"
 )
@@ -11,6 +12,44 @@ import (
 func main() {
 	list := []int{3, 2, 3, 1, 2, 4, 5, 5, 6}
 	fmt.Println(findKthLargest(list, 4))
+	fmt.Println(findKthLargestHeap(list, 4))
+}
+
+// findKthLargestHeap returns the kth largest value without changing nums.
+// Invariant: after processing at least k values, the min-heap contains the k
+// largest values seen, counting duplicates. Its root is the smallest retained
+// value, so it is the kth largest of the processed values.
+// Time: O(k + (n-k)*log(k+1)): heapify k values, then scan the remaining n-k.
+// Each scan compares in O(1); only a larger value needs an O(log(k+1)) root repair.
+// Extra space: O(k) for the copied heap. Invalid k panics before indexing nums.
+func findKthLargestHeap(nums []int, k int) int {
+	if k < 1 || k > len(nums) {
+		panic("k out of range")
+	}
+	h := minHeap(append([]int(nil), nums[:k]...))
+	heap.Init(&h)
+	for _, value := range nums[k:] {
+		if value > h[0] {
+			h[0] = value
+			heap.Fix(&h, 0)
+		}
+	}
+	return h[0]
+}
+
+type minHeap []int
+
+func (h minHeap) Len() int           { return len(h) }
+func (h minHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h minHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+// Push and Pop operate on the last slot; container/heap handles reordering.
+func (h *minHeap) Push(value any) { *h = append(*h, value.(int)) }
+func (h *minHeap) Pop() any {
+	last := len(*h) - 1
+	value := (*h)[last]
+	*h = (*h)[:last]
+	return value
 }
 
 // Expected time: O(n); worst case: O(n^2).

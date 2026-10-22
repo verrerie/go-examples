@@ -25,13 +25,13 @@ func pivotIndex(nums []int) int {
 			left = left + nums[pivot-1]
 		}
 		right = right - nums[pivot]
-		fmt.Println("pivot,left,right=", pivot, left, right)
 		if left == right {
 			return pivot
 		}
 	}
 	return -1
 }
+
 func main() {
 	fmt.Println(pivotIndex([]int{1, 7, 3, 6, 5, 6}))
 }

@@ -43,7 +43,7 @@ func rle(s string) string {
 	build := strings.Builder{}
 	prev := s[0]
 	n := 0
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if prev == s[i] {
 			n++
 		} else {

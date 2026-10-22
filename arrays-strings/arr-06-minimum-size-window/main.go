@@ -12,8 +12,8 @@ func main() {
 	fmt.Println(minSubArrayLen(11, []int{1, 1, 1, 1, 1}))
 }
 
-// time = O(n)
-// time = O(1)
+// time = O(n), left and right increment at most n times
+// space = O(1)
 func minSubArrayLen(target int, nums []int) int {
 	left, right := 0, 0
 	minL := 0
