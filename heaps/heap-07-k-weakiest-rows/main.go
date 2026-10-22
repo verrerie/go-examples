@@ -1,3 +1,8 @@
+// Question: Given a binary matrix with soldiers (1) before civilians (0) in
+// each row, return the zero-based indices of its k weakest rows, weakest first.
+// Fewer soldiers means weaker; ties favor the smaller row index. Assume at most
+// 100 rows and 1 <= k <= the number of rows.
+
 package main
 
 import "fmt"

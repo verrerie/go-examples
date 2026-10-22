@@ -1,3 +1,7 @@
+// Question: Reorder an acyclic linked list in place so nodes at odd positions
+// come before nodes at even positions, preserving relative order in each group.
+// Positions are 1-based; return the resulting head, or nil for an empty list.
+
 package main
 
 import (

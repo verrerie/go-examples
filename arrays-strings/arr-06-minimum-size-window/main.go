@@ -1,3 +1,7 @@
+// Question: Given a positive target and a slice of positive integers, return the
+// minimum length of a contiguous subarray with sum at least target.
+// Return 0 if no such subarray exists.
+
 package main
 
 import "fmt"

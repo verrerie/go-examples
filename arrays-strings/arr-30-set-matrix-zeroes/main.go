@@ -1,3 +1,7 @@
+// Question: Given a rectangular integer matrix with at least one column when nonempty,
+// set every row and column containing an original zero entirely to zero.
+// Modify the matrix in place using constant extra space.
+
 package main
 
 import "fmt"

@@ -1,3 +1,8 @@
+// Question: Given two acyclic linked lists of decimal digits in reverse order
+// (least significant digit first), return their sum in the same representation.
+// Each digit is in [0, 9]; a nil list represents zero. Return one zero node when
+// both inputs are nil.
+
 package main
 
 import (

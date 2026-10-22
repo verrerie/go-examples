@@ -1,3 +1,7 @@
+// Question: Given a binary search tree with distinct values and a nonnil node p
+// in that tree, return the next node after p in inorder traversal, or nil if p is
+// the largest node. Leave the tree unchanged.
+
 package main
 
 func main() {}

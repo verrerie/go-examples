@@ -1,3 +1,6 @@
+// Question: Given a nonempty integer slice and 1 <= k <= len(nums), return the kth
+// largest value, counting duplicate occurrences separately. k is 1-based.
+
 package main
 
 import (

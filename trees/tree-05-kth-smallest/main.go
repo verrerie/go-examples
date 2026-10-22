@@ -1,3 +1,6 @@
+// Question: Given a binary search tree and a valid 1-based rank k, return the
+// kth smallest node value. Assume the tree is nonempty and 1 <= k <= node count.
+
 package main
 
 import (

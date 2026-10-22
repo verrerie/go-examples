@@ -1,3 +1,6 @@
+// Question: Given a nonempty integer slice, return a slice of the same length where
+// result[i] is the sum of input elements from index 0 through i, inclusive.
+
 package main
 
 import "fmt"

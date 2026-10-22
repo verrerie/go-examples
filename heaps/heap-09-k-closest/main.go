@@ -1,3 +1,7 @@
+// Question: Given integer points [x, y] and 1 <= k <= len(points), return k
+// points closest to the origin by Euclidean distance, in any order. Any selection
+// among equally distant points is valid. Assume squared distances fit int.
+
 package main
 
 import "fmt"

@@ -1,3 +1,8 @@
+// Question: Evaluate a valid Reverse Polish Notation expression containing
+// integer tokens and the binary operators +, -, *, and /. Return its integer
+// value; division truncates toward zero. Assume no division by zero and that
+// every intermediate result fits int.
+
 package main
 
 import (

@@ -1,3 +1,8 @@
+// Question: Given a nonempty slice of tasks labeled A through Z and a nonnegative
+// cooldown n, return the minimum number of time intervals needed to finish all
+// tasks in any order. Each interval runs one task or is idle; equal task labels
+// must have at least n intervening intervals.
+
 package main
 
 import "fmt"

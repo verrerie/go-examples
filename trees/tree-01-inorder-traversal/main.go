@@ -1,3 +1,6 @@
+// Question: Given a binary-tree root, return its node values in inorder
+// (left subtree, node, right subtree). An empty tree produces an empty result.
+
 package main
 
 import (

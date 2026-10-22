@@ -1,3 +1,7 @@
+// Question: Implement an integer min-heap supporting insertion, reading the
+// minimum, and removing and returning the minimum. Allow duplicate values and
+// growth beyond the initial capacity; peek and pop on an empty heap must panic.
+
 package main
 
 import "fmt"

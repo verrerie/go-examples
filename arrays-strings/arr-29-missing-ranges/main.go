@@ -1,3 +1,7 @@
+// Question: Given a sorted slice of distinct integers within the inclusive range
+// [lower, upper], return all maximal missing ranges as inclusive [start, end]
+// pairs in ascending order. Assume lower <= upper and boundary arithmetic fits int.
+
 package main
 
 import "fmt"

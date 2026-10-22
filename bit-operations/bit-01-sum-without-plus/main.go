@@ -1,3 +1,6 @@
+// Question: Given two ints, return their sum without using + or - operators.
+// Use Go int arithmetic semantics, including wraparound on overflow.
+
 package main
 
 import "fmt"

@@ -1,3 +1,7 @@
+// Question: Given a nonempty n-by-n integer matrix whose rows and columns are
+// sorted in nondecreasing order, return its kth smallest value, counting duplicate
+// entries separately. k is one-based and satisfies 1 <= k <= n*n.
+
 package main
 
 import "fmt"

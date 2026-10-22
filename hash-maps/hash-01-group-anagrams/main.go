@@ -1,3 +1,7 @@
+// Question: Group lowercase English strings so that each group contains
+// exactly the anagrams of its members. Preserve duplicate occurrences; groups
+// and the strings within them may be returned in any order.
+
 package main
 
 import "fmt"

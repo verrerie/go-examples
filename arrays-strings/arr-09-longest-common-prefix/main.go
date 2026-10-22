@@ -1,3 +1,6 @@
+// Question: Given a slice of ASCII strings, return the longest prefix shared by all
+// strings. Return an empty string if the slice is empty or no prefix is shared.
+
 package main
 
 import (

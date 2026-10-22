@@ -1,3 +1,7 @@
+// Question: Given an integer slice sorted in nondecreasing order and a target, return
+// the 0-based indices of its first and last occurrences as [start, end].
+// Return [-1, -1] if the target is absent.
+
 package main
 
 import "fmt"

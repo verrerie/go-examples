@@ -1,3 +1,6 @@
+// Question: Given an ASCII string, return the length of its longest contiguous
+// substring containing no repeated characters. Return 0 for an empty string.
+
 package main
 
 import "fmt"

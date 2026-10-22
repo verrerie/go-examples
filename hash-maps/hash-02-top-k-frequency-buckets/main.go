@@ -1,3 +1,7 @@
+// Question: Given integers and 1 <= k <= the number of distinct values, return
+// the k distinct values that occur most frequently, in any order. Assume the
+// cutoff does not split a frequency tie, so the selected set is unambiguous.
+
 package main
 
 import "fmt"

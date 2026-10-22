@@ -1,3 +1,7 @@
+// Question: Given positive integer stick lengths, join any two sticks at a
+// cost equal to their combined length, replacing them with the joined stick.
+// Return the minimum total cost to leave one stick; zero or one stick costs 0.
+
 package main
 
 import "fmt"

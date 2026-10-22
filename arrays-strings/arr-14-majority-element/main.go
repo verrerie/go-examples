@@ -1,3 +1,6 @@
+// Question: Given a nonempty integer slice guaranteed to contain a majority element,
+// return that element. A majority element occurs more than len(nums)/2 times.
+
 package main
 
 import (

@@ -1,3 +1,6 @@
+// Question: Given a slice containing only 0, 1, and 2, sort it in place so that all
+// 0s come first, then all 1s, then all 2s. Use constant extra space.
+
 package main
 
 import "fmt"

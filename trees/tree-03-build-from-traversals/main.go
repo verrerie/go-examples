@@ -1,3 +1,7 @@
+// Question: Reconstruct a binary tree from its preorder and inorder traversals
+// and return its root. The traversals are valid, contain the same distinct values,
+// and have equal lengths. Empty traversals represent an empty tree.
+
 package main
 
 import (

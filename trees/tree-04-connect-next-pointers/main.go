@@ -1,3 +1,8 @@
+// Question: Given a perfect binary tree with all Next pointers initially nil,
+// set each node's Next to its immediate right neighbor at the same depth, or nil
+// for the last node on a level. Preserve the tree and return its original root;
+// an empty tree returns nil.
+
 package main
 
 import (

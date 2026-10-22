@@ -1,3 +1,7 @@
+// Question: Given the heads of two acyclic linked lists, return their first
+// shared node, or nil if they do not intersect. Intersection means the same node
+// address, not equal values; leave both lists unchanged.
+
 package main
 
 import (

@@ -1,3 +1,6 @@
+// Question: Given a linked-list head, return whether following Next pointers
+// ever revisits the same node. An empty list has no cycle.
+
 package main
 
 import "fmt"

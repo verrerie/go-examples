@@ -1,3 +1,8 @@
+// Question: Implement a trie supporting insertion, exact-word membership, and
+// prefix membership for valid UTF-8 strings, without Unicode normalization.
+// The zero value must be usable. Empty words may be inserted; the empty prefix
+// always exists, while the empty word exists only after insertion.
+
 package main
 
 import "fmt"

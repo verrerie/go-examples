@@ -1,3 +1,7 @@
+// Question: Given positive integer stone weights, repeatedly smash the two
+// heaviest stones. Equal weights both disappear; otherwise replace them with
+// their weight difference. Return the last remaining weight, or 0 if none remain.
+
 package main
 
 import "fmt"

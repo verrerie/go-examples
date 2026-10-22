@@ -1,3 +1,7 @@
+// Question: Given strings haystack and needle, return the 0-based byte index of the
+// first occurrence of needle in haystack, or -1 if it does not occur.
+// An empty needle matches at index 0.
+
 package main
 
 import "fmt"

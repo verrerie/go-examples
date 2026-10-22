@@ -1,3 +1,9 @@
+// Question: Given an integer slice, support in-place max/min heap construction
+// and sorting in ascending order. Also return its k largest values (topK, in no
+// required order) or its kth largest value (Kth, one-based); duplicates count.
+// Selection may mutate the input, and topK returns a view into it. For k outside
+// [1, len(arr)], topK returns empty without mutation and Kth panics.
+
 package main
 
 import "fmt"

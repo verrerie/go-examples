@@ -1,3 +1,6 @@
+// Question: Given an integer slice, sort its values in nondecreasing order in place
+// using quicksort. Empty and single-element slices are already sorted.
+
 package main
 
 import (

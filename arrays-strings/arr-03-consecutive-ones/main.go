@@ -1,3 +1,6 @@
+// Question: Given a binary slice containing only 0 and 1, return the length of the
+// longest contiguous run of 1s. Return 0 for an empty slice.
+
 package main
 
 import "fmt"

@@ -1,3 +1,7 @@
+// Question: Given meeting intervals [start, end) with start < end, return the
+// minimum number of rooms needed to hold every meeting. A room is reusable when
+// one meeting ends exactly as another starts; no meetings require zero rooms.
+
 package main
 
 import (

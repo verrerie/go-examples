@@ -1,3 +1,7 @@
+// Question: Given a rectangular grid of '1' (land) and '0' (water), return the
+// number of islands. Land cells connect horizontally or vertically, not diagonally.
+// An empty grid has zero islands; modifying the grid is allowed.
+
 package main
 
 import "fmt"

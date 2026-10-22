@@ -1,3 +1,8 @@
+// Question: Implement a data structure that accepts integer values through
+// AddNum and returns the median of all values seen through FindMedian. Duplicates
+// count; for an even count, return the mean of the two middle values as float64.
+// Assume FindMedian is called only after an insertion and arithmetic fits int.
+
 package main
 
 import (

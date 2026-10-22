@@ -1,3 +1,7 @@
+// Question: Given a slice of nonnegative integers, return the 0-based index of a
+// largest value if it is at least twice every other value; otherwise return -1.
+// For this exercise, return -1 when the slice has fewer than two elements.
+
 package main
 
 import "fmt"

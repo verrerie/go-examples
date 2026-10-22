@@ -1,3 +1,7 @@
+// Question: Given an integer slice, return the leftmost 0-based index whose elements
+// to the left and right have equal sums, excluding the element at that index.
+// An empty side has sum 0. Return -1 if no such index exists.
+
 package main
 
 import "fmt"

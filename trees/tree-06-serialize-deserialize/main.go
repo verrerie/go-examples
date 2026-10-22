@@ -1,3 +1,7 @@
+// Question: Implement a codec that encodes a binary tree as a string and decodes
+// that string into a tree with identical values and structure, including an empty
+// tree. The decoder receives a valid encoding produced by the codec.
+
 package main
 
 import (

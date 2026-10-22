@@ -1,3 +1,7 @@
+// Question: Given a positive integer n, return the nth count-and-say term, starting
+// with "1" as term 1. Each next term describes consecutive equal digits in
+// the previous term by writing each run length followed by its digit.
+
 package main
 
 import (

@@ -1,3 +1,8 @@
+// Question: Implement an integer set with Insert and Remove returning whether
+// membership changed, and GetRandom returning each present value with equal
+// probability. Support expected or amortized O(1) operations; GetRandom requires
+// a nonempty set, and this implementation panics if it is empty.
+
 package main
 
 import (

@@ -1,3 +1,7 @@
+// Question: Given a strictly increasing integer slice rotated at an unknown pivot
+// (possibly unrotated), return the 0-based index of a target, or -1 if absent.
+// All input values are distinct.
+
 package main
 
 import "fmt"

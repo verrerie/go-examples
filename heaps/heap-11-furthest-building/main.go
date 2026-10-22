@@ -1,3 +1,8 @@
+// Question: Given nonempty building heights and nonnegative counts of bricks
+// and ladders, start at index 0 and move only to the next building. A positive
+// climb costs that many bricks or one ladder; level or downward moves are free.
+// Return the furthest zero-based building index reachable with these resources.
+
 package main
 
 import (

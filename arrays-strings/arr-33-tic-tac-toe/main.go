@@ -1,3 +1,8 @@
+// Question: Implement an n-by-n Tic-Tac-Toe game for positive n. Move places player
+// 1 or 2 at 0-based (row, col) and returns that player if they complete a row,
+// column, or either diagonal; otherwise return 0. Assume alternating valid moves
+// on empty cells, with no moves after a winner is found.
+
 package main
 
 import "slices"

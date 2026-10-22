@@ -1,3 +1,7 @@
+// Question: Given integer values in a slice, return the maximum sum obtainable
+// by selecting values at nonadjacent indices. Choosing none is allowed, so an
+// empty or all-negative input returns zero. All sums must fit int.
+
 package main
 
 import "fmt"

@@ -1,3 +1,7 @@
+// Question: Given a rectangular integer matrix whose rows and columns are each sorted
+// in nondecreasing order, return whether a target value occurs in the matrix.
+// Return false for an empty matrix.
+
 package main
 
 import "fmt"

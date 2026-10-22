@@ -1,3 +1,8 @@
+// Question: Given a directed weighted graph as adjacency lists and a source,
+// return the shortest distance from the source to every vertex. Vertex IDs are
+// 0-based and valid; weights are nonnegative. Use infinity for unreachable or
+// unrepresentable distances, and return all infinity values for an invalid source.
+
 package main
 
 import (

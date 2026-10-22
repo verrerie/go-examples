@@ -1,3 +1,7 @@
+// Question: Implement an iterator over a possibly ragged 2D integer slice in row order,
+// skipping empty rows. HasNext reports whether an element remains without
+// consuming it; Next returns and consumes that element, and panics if exhausted.
+
 package main
 
 import "fmt"

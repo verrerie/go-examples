@@ -1,3 +1,7 @@
+// Question: Given a nonempty slice of closed intervals [start, end], with start <= end,
+// merge all overlapping intervals and return the resulting disjoint intervals
+// in start order. Intervals sharing an endpoint overlap.
+
 package main
 
 import (

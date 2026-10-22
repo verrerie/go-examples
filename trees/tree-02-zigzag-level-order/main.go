@@ -1,3 +1,7 @@
+// Question: Given a binary-tree root, return node values grouped by depth,
+// alternating left-to-right and right-to-left order, starting left-to-right at
+// the root. An empty tree produces an empty result.
+
 package main
 
 import (

@@ -1,3 +1,7 @@
+// Question: Among n >= 1 people numbered 0 through n-1, find the celebrity using
+// knows(a, b): a celebrity knows nobody else and is known by everyone else.
+// Return that person's index, or -1 if no celebrity exists; self-knowledge is ignored.
+
 package main
 
 func main() {}

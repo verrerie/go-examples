@@ -1,3 +1,6 @@
+// Question: Given an integer slice, return whether there are indices i < j < k such
+// that nums[i] < nums[j] < nums[k]. The selected elements need not be adjacent.
+
 package main
 
 import (

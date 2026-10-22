@@ -1,3 +1,7 @@
+// Question: Given an ASCII string, return a longest contiguous palindromic substring
+// (a substring that reads the same forward and backward). Any longest answer
+// is acceptable; return an empty string for empty input.
+
 package main
 
 import "fmt"
