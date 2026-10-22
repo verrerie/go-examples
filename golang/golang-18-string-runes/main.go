@@ -9,13 +9,19 @@ func main() {
 	const s = "สวัสดี"
 	fmt.Println("len=", len(s))
 
-	for _, r := range s {
-		fmt.Printf("%x ", r)
+	for i, r := range s {
+		fmt.Printf("(%v)%v ", i, string(r))
 	}
 
 	fmt.Println()
+	fmt.Println("runes")
 	for _, c := range "hello world!" {
-		fmt.Printf("%v-", string(c))
+		fmt.Printf("%v ", string(c))
+	}
+	fmt.Println()
+	fmt.Println("bytes")
+	for _, b := range []byte("hello world!") {
+		fmt.Printf("%v ", b)
 	}
 
 	fmt.Println()

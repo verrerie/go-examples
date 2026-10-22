@@ -9,7 +9,13 @@ func main() {
 	}
 
 	strs := "hello world!"
+	fmt.Println("runes")
 	for _, c := range strs {
 		fmt.Println("char:", c)
+	}
+
+	fmt.Println("types")
+	for _, b := range []byte(strs) {
+		fmt.Println("byte:", b)
 	}
 }
