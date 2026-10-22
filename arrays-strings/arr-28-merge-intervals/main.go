@@ -32,17 +32,20 @@ func merge(intervals [][]int) [][]int {
 	})
 
 	result := [][]int{}
-	interval := intervals[0]
+	// union is the current open union with earliest start
+	union := intervals[0]
 	// time = O(n)
 	for next := range intervals {
-		if interval[1] >= intervals[next][0] {
-			interval = []int{interval[0], max(interval[1], intervals[next][1])}
+		if union[1] >= intervals[next][0] {
+			// case overlap
+			union = []int{union[0], max(union[1], intervals[next][1])}
 		} else {
-			result = append(result, interval)
-			interval = intervals[next]
+			// record last union and start new union
+			result = append(result, union)
+			union = intervals[next]
 		}
 	}
-	result = append(result, interval)
+	result = append(result, union)
 	// space = O(n)
 	return result
 }
